@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EcoCart — Shop Sustainably. Live Responsibly.</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="logo">EcoCart</h1>
+      <nav class="main-nav">
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#impact">Eco Impact</a>
+        <a href="#blog">Blog</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#admin" class="admin-link">Admin</a>
+      </nav>
+      <div class="header-actions">
+        <button id="btn-login">Login</button>
+        <button id="btn-cart">Cart (<span id="cart-count">0</span>)</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Home / Banner -->
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h2>Shop Sustainably. Live Responsibly.</h2>
+          <p>Discover eco-friendly, plastic-free and reusable products that help protect our planet.</p>
+          <div class="hero-ctas">
+            <button id="cta-shop" class="btn primary">Shop Now</button>
+            <button id="cta-explore" class="btn">Explore Eco Products</button>
+          </div>
+          <ul class="why-ecocart">
+            <li>100% eco-friendly</li>
+            <li>Plastic-free packaging</li>
+            <li>Ethical sourcing</li>
+          </ul>
+        </div>
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=67c4c6ad976b799bda0f9f796be8a0ff" alt="eco products banner" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section id="products" class="section">
+      <div class="container">
+        <h2>Products</h2>
+        <div class="categories" id="category-filters"></div>
+        <div id="products-grid" class="products-grid"></div>
+      </div>
+    </section>
+
+    <!-- Cart / Checkout -->
+    <section id="cart" class="section hidden">
+      <div class="container">
+        <h2>Your Cart</h2>
+        <div id="cart-list"></div>
+        <div class="cart-summary">
+          <p id="cart-message">You are saving the planet with every purchase 🌍</p>
+          <p>Total: $<span id="cart-total">0.00</span></p>
+          <button id="btn-checkout" class="btn primary">Checkout</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Payment modal (cash/online selection and demo online payment) -->
+    <div id="payment-modal" class="modal hidden">
+      <div class="modal-content">
+        <button class="modal-close" id="payment-close">×</button>
+        <h3>Choose Payment Method</h3>
+        <div style="display:flex;gap:1rem;flex-direction:column">
+          <button id="pay-cod" class="btn">Cash on Delivery</button>
+          <button id="pay-online" class="btn primary">Online Payment (Demo)</button>
+        </div>
+
+        <div id="online-payment-form" class="hidden" style="margin-top:1rem">
+          <h4>Online Payment (Demo)</h4>
+          <p>Demo payment — enter any card details (not real). To enable real payments, integrate Stripe backend.</p>
+          <input id="card-name" placeholder="Name on card" />
+          <input id="card-number" placeholder="Card number (demo)" />
+          <input id="card-exp" placeholder="MM/YY" />
+          <input id="card-cvc" placeholder="CVC" />
+          <div style="display:flex;gap:.5rem;margin-top:.5rem">
+            <button id="btn-pay-now" class="btn primary">Pay Now</button>
+            <button id="btn-pay-cancel" class="btn">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Impact Tracker -->
+    <section id="impact" class="section impact-section">
+      <div class="container">
+        <h2>Eco Impact Tracker</h2>
+        <div class="impact-cards">
+          <div class="impact-card">
+            <h3 id="impact-plastic">0</h3>
+            <p>Plastic bags avoided</p>
+          </div>
+          <div class="impact-card">
+            <h3 id="impact-co2">0</h3>
+            <p>kg CO₂ reduced (est.)</p>
+          </div>
+          <div class="impact-card">
+            <h3 id="impact-orders">0</h3>
+            <p>Orders placed</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog -->
+    <section id="blog" class="section">
+      <div class="container">
+        <h2>Blog & Awareness</h2>
+        <div id="blog-list" class="blog-list"></div>
+      </div>
+    </section>
+
+    <!-- Eco Tips -->
+    <section id="tips" class="section tips-section">
+      <div class="container">
+        <h2>Eco Tips</h2>
+        <ul class="tips-list">
+          <li>Carry reusable bags</li>
+          <li>Avoid single-use plastic</li>
+          <li>Compost kitchen waste</li>
+          <li>Choose bamboo and natural materials</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews" class="section">
+      <div class="container">
+        <h2>Reviews & Ratings</h2>
+        <div id="reviews-list"></div>
+        <div class="review-form">
+          <h3>Leave a review</h3>
+          <input id="review-title" placeholder="Title" />
+          <textarea id="review-body" placeholder="Your review"></textarea>
+          <button id="btn-submit-review" class="btn">Submit Review</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <h2>About EcoCart</h2>
+        <p>EcoCart is a platform dedicated to promoting sustainable and eco-friendly products for a better tomorrow.</p>
+        <h3>Mission</h3>
+        <p>Reduce plastic usage and promote sustainable living.</p>
+        <h3>Vision</h3>
+        <p>A green future and conscious consumers.</p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <form id="contact-form" class="contact-form">
+          <input id="contact-name" placeholder="Your name" required />
+          <input id="contact-email" placeholder="Your email" required />
+          <textarea id="contact-message" placeholder="Message" required></textarea>
+          <button type="submit" class="btn primary">Send Message</button>
+        </form>
+        <div class="contact-details">
+          <p>Email: hello@ecocart.example</p>
+          <p>Phone: +1 555 123 4567</p>
+          <div class="socials">Follow us: [instagram] [facebook] [twitter]</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Admin Panel -->
+    <section id="admin" class="section admin-section">
+      <div class="container">
+        <h2>Admin Panel</h2>
+        <div id="admin-login">
+          <p>Admin login (id: <strong>Maitree29</strong>, password: <strong>001</strong>)</p>
+          <input id="admin-id" placeholder="Admin ID" />
+          <input id="admin-pass" placeholder="Password" type="password" />
+          <button id="btn-admin-login" class="btn primary">Login as Admin</button>
+        </div>
+        <div id="admin-dashboard" class="hidden">
+          <h3>Orders</h3>
+          <table id="admin-orders-table" class="orders-table">
+            <thead>
+              <tr><th>Order ID</th><th>Customer</th><th>Email</th><th>Items</th><th>Total</th><th>Payment</th><th>Paid</th><th>Date</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+
+          <h3>Products</h3>
+          <table id="admin-products-table" class="orders-table">
+            <thead>
+              <tr><th>Product ID</th><th>Name</th><th>Category</th><th>Price</th><th>Eco Benefit</th><th>Actions</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+
+          <h3 id="prod-form-title">Add Product</h3>
+          <div class="add-product-form">
+            <input id="prod-name" placeholder="Product name" />
+            <input id="prod-category" placeholder="Category (Reusable Bags, Bamboo Products, ...)" />
+            <input id="prod-price" placeholder="Price" type="number" step="0.01" />
+            <input id="prod-image" placeholder="Image URL" />
+            <input id="prod-eco" placeholder="Short eco benefit" />
+            <input id="prod-plastic" placeholder="Plastic saved (units)" type="number" step="0.1" />
+            <input id="prod-co2" placeholder="CO2 reduced (kg)" type="number" step="0.01" />
+            <div style="display:flex;gap:.5rem;margin-top:.5rem">
+              <button id="btn-add-product" class="btn">Add Product</button>
+              <button id="btn-update-product" class="btn hidden">Update Product</button>
+              <button id="btn-cancel-edit" class="btn hidden">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Register / Login modal -->
+    <div id="auth-modal" class="modal hidden">
+      <div class="modal-content">
+        <button class="modal-close" id="auth-close">×</button>
+        <div class="auth-forms">
+          <div id="form-login" class="auth-form">
+            <h3>Login</h3>
+            <input id="login-email" placeholder="Email" />
+            <input id="login-password" placeholder="Password" type="password" />
+            <button id="btn-do-login" class="btn primary">Login</button>
+            <p>Don't have an account? <a href="#" id="show-register">Register</a></p>
+          </div>
+          <div id="form-register" class="auth-form hidden">
+            <h3>Register</h3>
+            <input id="reg-name" placeholder="Full name" />
+            <input id="reg-login" placeholder="Login name" />
+            <input id="reg-email" placeholder="Email" />
+            <input id="reg-password" placeholder="Password" type="password" />
+            <button id="btn-do-register" class="btn primary">Register</button>
+            <p>Already have an account? <a href="#" id="show-login">Login</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© EcoCart — Shop Sustainably. Live Responsibly.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
